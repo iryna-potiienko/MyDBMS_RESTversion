@@ -1,0 +1,123 @@
+{
+  "Id": 1,
+  "Name": "DatabaseGot",
+  "Tables": [
+    {
+      "Id": 1,
+      "Name": "Table1",
+      "Columns": [
+        {
+          "Id": 1,
+          "Name": "Column1",
+          "Type": 3,
+          "Values": [
+            {
+              "Id": 1,
+              "Data": "v",
+              "RowNumber": 1,
+              "ColumnId": 1
+            },
+            {
+              "Id": 3,
+              "Data": "h",
+              "RowNumber": 2,
+              "ColumnId": 1
+            },
+            {
+              "Id": 17,
+              "Data": "",
+              "RowNumber": 3,
+              "ColumnId": 1
+            }
+          ],
+          "TableId": 1
+        },
+        {
+          "Id": 2,
+          "Name": "Column2",
+          "Type": 3,
+          "Values": [
+            {
+              "Id": 2,
+              "Data": "c",
+              "RowNumber": 1,
+              "ColumnId": 2
+            },
+            {
+              "Id": 4,
+              "Data": "h",
+              "RowNumber": 2,
+              "ColumnId": 2
+            },
+            {
+              "Id": 18,
+              "Data": "",
+              "RowNumber": 3,
+              "ColumnId": 2
+            }
+          ],
+          "TableId": 1
+        }
+      ],
+      "RowsNumber": 3,
+      "DatabaseId": 1
+    },
+    {
+      "Id": 2,
+      "Name": "Table2",
+      "Columns": [
+        {
+          "Id": 3,
+          "Name": "Column1",
+          "Type": 3,
+          "Values": [
+            {
+              "Id": 14,
+              "Data": "v",
+              "RowNumber": 1,
+              "ColumnId": 3
+            }
+          ],
+          "TableId": 2
+        },
+        {
+          "Id": 4,
+          "Name": "Column2",
+          "Type": 3,
+          "Values": [
+            {
+              "Id": 15,
+              "Data": "c",
+              "RowNumber": 1,
+              "ColumnId": 4
+            }
+          ],
+          "TableId": 2
+        },
+        {
+          "Id": 5,
+          "Name": "Column3",
+          "Type": 3,
+          "Values": [
+            {
+              "Id": 16,
+              "Data": "w",
+              "RowNumber": 1,
+              "ColumnId": 5
+            }
+          ],
+          "TableId": 2
+        }
+      ],
+      "RowsNumber": 1,
+      "DatabaseId": 1
+    },
+    {
+      "Id": 3,
+      "Name": "Table3",
+      "Columns": [],
+      "RowsNumber": 0,
+      "DatabaseId": 1
+    }
+  ]
+}
