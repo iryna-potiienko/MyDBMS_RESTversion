@@ -14,11 +14,13 @@ namespace WebAPI.Controllers
     {
         private readonly TableRepository _tableRepository;
         private readonly TablesDifferenceRepository _tablesDifferenceRepository;
+        private readonly TableProjectionRepository _tableProjectionRepository;
 
-        public TableController(TableRepository tableRepository, TablesDifferenceRepository tablesDifferenceRepository)
+        public TableController(TableRepository tableRepository, TablesDifferenceRepository tablesDifferenceRepository, TableProjectionRepository tableProjectionRepository)
         {
             _tableRepository = tableRepository;
             _tablesDifferenceRepository = tablesDifferenceRepository;
+            _tableProjectionRepository = tableProjectionRepository;
         }
         
         [HttpGet("GetAllTables/{databaseName}")]
@@ -74,6 +76,18 @@ namespace WebAPI.Controllers
             var table1 = _tableRepository.FindTableByName(database1Name, table1Name);
             var table2 = _tableRepository.FindTableByName(database2Name, table2Name);
             return _tablesDifferenceRepository.FindTablesDifference(table1, table2);
+        }
+        
+        [HttpPost("FindTableProjection")]
+        public ActionResult<List<List<string>>> GetTableProjection([Required] string databaseName, [Required] string tableName,
+            [Required] List<string> columnsNames )
+        {
+            if (!_tableRepository.TableExistsInDatabase(databaseName, tableName))
+                return NotFound();
+
+            var table = _tableRepository.FindTableByName(databaseName, tableName);
+            //return _tablesDifferenceRepository.FindTablesDifference(table1, table2);
+            return _tableProjectionRepository.FindTableProjection(table, columnsNames);
         }
     }
 }

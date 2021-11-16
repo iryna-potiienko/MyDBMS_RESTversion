@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DatabaseLayer
 {
-    public static class DataLayerDependencies
+    public static class DatabaseLayerDependencies
     {
         public static void AddRepository(this IServiceCollection services, IConfiguration configuration)
         {
@@ -14,6 +14,8 @@ namespace DatabaseLayer
             services.AddScoped<ColumnDataRepository>();
             services.AddScoped<ValidateRepository>();
             services.AddScoped<TablesDifferenceRepository>();
+            
+            services.AddScoped<TableProjectionRepository>();
         }
     }
 }
