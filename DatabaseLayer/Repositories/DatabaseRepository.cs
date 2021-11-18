@@ -2,18 +2,20 @@
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using DatabaseLayer.IRepositories;
 using DatabaseLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseLayer.Repositories
 {
-    public class DatabaseRepository
+    public class DatabaseRepository: IDatabaseRepository
     {
         //public List<Database> DatabasesList { get; set; }
         
-        private readonly MyDBMSContext _context;
+        //private readonly MyDBMSContext _context;
+        private readonly IRepository _context;
         
-        public DatabaseRepository(MyDBMSContext myDbmsContext)
+        public DatabaseRepository(IRepository myDbmsContext)
         {
             _context = myDbmsContext;
         }
@@ -36,7 +38,7 @@ namespace DatabaseLayer.Repositories
         {
             var database = new Database {Name = name};
             _context.Databases.Add(database);
-            _context.SaveChanges();
+            _context.Save();
         }
 
         public bool RemoveDatabase(string databaseName)
@@ -48,7 +50,7 @@ namespace DatabaseLayer.Repositories
             }
             
             _context.Databases.Remove(database);
-            _context.SaveChanges();
+            _context.Save();
             return true;
         }
 
@@ -79,7 +81,7 @@ namespace DatabaseLayer.Repositories
             
             //DatabasesList.Add(database);
             _context.Databases.Add(database);
-            _context.SaveChanges();
+            _context.Save();
             return 0;
         }
     }

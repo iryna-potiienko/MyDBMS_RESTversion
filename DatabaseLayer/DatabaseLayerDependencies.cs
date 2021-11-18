@@ -1,4 +1,5 @@
-﻿using DatabaseLayer.Repositories;
+﻿using DatabaseLayer.Models;
+using DatabaseLayer.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,6 +9,9 @@ namespace DatabaseLayer
     {
         public static void AddRepository(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<IRepository, MyDBMSContext>();
+            services.AddDbContext<MyDBMSContext>();
+            
             services.AddScoped<DatabaseRepository>();
             services.AddScoped<TableRepository>();
             services.AddScoped<ColumnRepository>();

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using DatabaseLayer.IRepositories;
 using DatabaseLayer.Models;
 using DatabaseLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +12,9 @@ namespace WebAPI.Controllers
     [Route("[controller]")]
     public class ColumnController: ControllerBase
     {
-        private readonly ColumnRepository _columnRepository;
+        private readonly IColumnRepository _columnRepository;
 
-        public ColumnController(ColumnRepository columnRepository)
+        public ColumnController(IColumnRepository columnRepository)
         {
             _columnRepository = columnRepository;
         }

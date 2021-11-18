@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DatabaseLayer.IRepositories;
 using DatabaseLayer.Models;
 
 namespace DatabaseLayer.Repositories
 {
-    public class TableRepository
+    public class TableRepository: ITableRepository
     {
-        private readonly MyDBMSContext _context;
+        //private readonly MyDBMSContext _context;
+        private readonly IRepository _context;
         private readonly DatabaseRepository _databaseRepository;
 
-        public TableRepository(MyDBMSContext myDbmsContext, DatabaseRepository databaseRepository)
+        public TableRepository(Models.IRepository myDbmsContext, DatabaseRepository databaseRepository)
         {
             _context = myDbmsContext;
             _databaseRepository = databaseRepository;
@@ -39,7 +41,7 @@ namespace DatabaseLayer.Repositories
             
             var table = new Table {Name = tableName, DatabaseId = database.Id};
             _context.Tables.Add(table);
-            _context.SaveChanges();
+            _context.Save();
             return true;
         }
 
@@ -47,7 +49,7 @@ namespace DatabaseLayer.Repositories
         {
             var table = FindTableByName(databaseName, tableName);
             _context.Tables.Remove(table);
-            _context.SaveChanges();
+            _context.Save();
         }
 
         public bool TableExistsInDatabase(string databaseName, string tableName)

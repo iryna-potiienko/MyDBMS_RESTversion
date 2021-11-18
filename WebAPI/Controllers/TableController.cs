@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using DatabaseLayer.IRepositories;
 using DatabaseLayer.Models;
 using DatabaseLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,11 @@ namespace WebAPI.Controllers
     [Route("[controller]")]
     public class TableController: ControllerBase
     {
-        private readonly TableRepository _tableRepository;
+        private readonly ITableRepository _tableRepository;
         private readonly TablesDifferenceRepository _tablesDifferenceRepository;
-        private readonly TableProjectionRepository _tableProjectionRepository;
+        private readonly ITableProjectionRepository _tableProjectionRepository;
 
-        public TableController(TableRepository tableRepository, TablesDifferenceRepository tablesDifferenceRepository, TableProjectionRepository tableProjectionRepository)
+        public TableController(ITableRepository tableRepository, TablesDifferenceRepository tablesDifferenceRepository, ITableProjectionRepository tableProjectionRepository)
         {
             _tableRepository = tableRepository;
             _tablesDifferenceRepository = tablesDifferenceRepository;

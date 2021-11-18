@@ -32,7 +32,8 @@ namespace WebAPI
             // services.AddScoped<DatabaseInitializer>();
             // services.AddScoped<DatabaseStateHolder>();
             
-            services.AddDbContext<MyDBMSContext>();
+            // services.AddScoped<IRepository, MyDBMSContext>();
+            // services.AddDbContext<MyDBMSContext>();
             services.AddRepository(Configuration);
 
             services.AddControllers()

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DatabaseLayer.IRepositories;
 using DatabaseLayer.Models;
 
 namespace DatabaseLayer.Repositories
 {
-    public class TableProjectionRepository
+    public class TableProjectionRepository : ITableProjectionRepository
     {
         public List<List<string>> FindTableProjection(Table table, List<string> columnsNamesList)
         {

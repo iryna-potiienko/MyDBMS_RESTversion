@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseLayer.Models
 {
@@ -8,5 +9,7 @@ namespace DatabaseLayer.Models
         public DbSet<Table> Tables { get; set; }
         public DbSet<Column> Columns { get; set; }
         public DbSet<DataValue> DataValues { get; set; }
+        
+        Task Save();
     }
 }

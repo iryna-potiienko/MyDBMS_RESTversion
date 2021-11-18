@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseLayer.Models
 {
-    public class MyDBMSContext: DbContext
+    public class MyDBMSContext: DbContext, IRepository
     {
         public DbSet<Database> Databases { get; set; }
         public DbSet<Table> Tables { get; set; }
@@ -14,6 +15,11 @@ namespace DatabaseLayer.Models
             Database.EnsureCreated();
         }
  
+        public Task Save()
+        {
+            return SaveChangesAsync();
+        }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=localhost,1440;Database=MyDBMSDatabase;User=SA;Password=myStrong_password(!);");

@@ -9,9 +9,10 @@ namespace DatabaseLayer.Repositories
         private readonly TableRepository _tableRepository;
         private readonly ValidateRepository _validateRepository;
         private readonly ColumnRepository _columnRepository;
-        private readonly MyDBMSContext _context;
+        //private readonly MyDBMSContext _context;
+        private readonly Models.IRepository _context;
 
-        public ColumnDataRepository(MyDBMSContext myDbmsContext, TableRepository tableRepository, ColumnRepository columnRepository, ValidateRepository validateRepository)
+        public ColumnDataRepository(Models.IRepository myDbmsContext, TableRepository tableRepository, ColumnRepository columnRepository, ValidateRepository validateRepository)
         {
             _context = myDbmsContext;
             _tableRepository = tableRepository;
@@ -38,7 +39,7 @@ namespace DatabaseLayer.Repositories
                 _context.DataValues.Update(dataValue);
             }
 
-            _context.SaveChanges();
+            _context.Save();
             // if (rowIndex > columnData.Count - 1)
             // {
             //     columnData.Add(dataValue); //.Insert(rowIndex, dataValue); //.Add(dataValue);
@@ -109,7 +110,7 @@ namespace DatabaseLayer.Repositories
 
             table.RowsNumber += 1;
             _context.Tables.Update(table);
-            _context.SaveChanges();
+            _context.Save();
 
             return 0;
         }
@@ -136,7 +137,7 @@ namespace DatabaseLayer.Repositories
             }
             //_context.DataValues.RemoveRange(row);
             //_context.DataValues.UpdateRange(row);
-            _context.SaveChanges();
+            _context.Save();
             return true;
         }
     }

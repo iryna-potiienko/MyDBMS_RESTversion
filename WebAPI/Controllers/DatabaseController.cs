@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using DatabaseLayer.IRepositories;
 using DatabaseLayer.Models;
 using DatabaseLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +11,9 @@ namespace WebAPI.Controllers
     [Route("[controller]")]
     public class DatabaseController: ControllerBase
     {
-        private readonly DatabaseRepository _databaseRepository;
+        private readonly IDatabaseRepository _databaseRepository;
 
-        public DatabaseController(DatabaseRepository databaseRepository)
+        public DatabaseController(IDatabaseRepository databaseRepository)
         {
             _databaseRepository = databaseRepository;
         }

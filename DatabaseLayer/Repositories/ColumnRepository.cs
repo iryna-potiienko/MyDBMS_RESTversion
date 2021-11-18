@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DatabaseLayer.IRepositories;
 using DatabaseLayer.Models;
 
 namespace DatabaseLayer.Repositories
 {
-    public class ColumnRepository
+    public class ColumnRepository: IColumnRepository
     {
-        private readonly MyDBMSContext _context;
-        private TableRepository _tableRepository { get; set; }
-        
-        public ColumnRepository(MyDBMSContext myDbmsContext, TableRepository tableRepository)
+        //private readonly MyDBMSContext _context;
+        private readonly IRepository _context;
+        private readonly TableRepository _tableRepository;
+
+        public ColumnRepository(Models.IRepository myDbmsContext, TableRepository tableRepository)
         {
             _context = myDbmsContext;
             _tableRepository = tableRepository;
@@ -39,14 +41,14 @@ namespace DatabaseLayer.Repositories
             
             var column = new Column {Name = columnName, Type = columnType, TableId = table.Id};
             _context.Columns.Add(column);
-            _context.SaveChanges();
+            _context.Save();
             
             for (var i = 1; i <= table.RowsNumber; i++)
             {
                 _context.DataValues.Add(new DataValue {ColumnId = column.Id, RowNumber = i});
             }
 
-            _context.SaveChanges();
+            _context.Save();
             return true;
         }
 
@@ -57,7 +59,7 @@ namespace DatabaseLayer.Repositories
             //table.Columns.Remove(column);
             
             _context.Columns.Remove(column);
-            _context.SaveChanges();
+            _context.Save();
         }
 
         public bool ColumnExistsInTable(string databaseName, string tableName, string columnName)
