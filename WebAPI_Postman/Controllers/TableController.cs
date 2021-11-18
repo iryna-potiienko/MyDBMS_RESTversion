@@ -78,7 +78,7 @@ namespace WebAPI.Controllers
             return _tablesDifferenceRepository.FindTablesDifference(table1, table2);
         }
         
-        [HttpGet("FindTableProjection")]
+        [HttpPost("FindTableProjection")]
         public ActionResult<List<List<string>>> GetTableProjection([Required] string databaseName, [Required] string tableName,
             [Required] List<string> columnsNames )
         {
