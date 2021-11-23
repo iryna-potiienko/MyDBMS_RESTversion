@@ -1,4 +1,5 @@
-﻿using DatabaseLayer.Models;
+﻿using DatabaseLayer.IRepositories;
+using DatabaseLayer.Models;
 using DatabaseLayer.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,10 @@ namespace DatabaseLayer
             services.AddScoped<TablesDifferenceRepository>();
             
             services.AddScoped<TableProjectionRepository>();
+            
+            services.AddScoped<IDatabaseRepository, DatabaseRepository>();
+            services.AddScoped<ITableRepository, TableRepository>();
+            services.AddScoped<IColumnRepository, ColumnRepository>();
         }
     }
 }
