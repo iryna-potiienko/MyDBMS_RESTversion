@@ -1,0 +1,23 @@
+﻿@model TableProjectionViewModel
+<div>
+    <h3>Форма оформления покупки</h3>
+    <p>Для оформления покупки заполните следующие поля:</p>
+    <form method="post">
+        <table>
+            <tr>
+                <td>DatabaseName:</td>
+                <td><input type="text" name="DatabaseName" /> </td>
+            </tr>
+            <tr>
+                <td>TableName:</td>
+                <td><input type="text" name="TableName" /></td>
+            </tr>
+            <tr>
+                <td>ColumnsNames:</td>
+                <td><input type="text" name="ColumnsNames" /></td>
+            </tr>
+            
+            <tr><td><input type="submit" value="Отправить" asp-action="Index"/> </td><td></td></tr>
+        </table>
+    </form>
+</div>

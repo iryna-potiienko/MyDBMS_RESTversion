@@ -1,0 +1,25 @@
+﻿@model List<List<string>>
+
+@{
+    ViewBag.Title = "Table Projection";
+}
+
+<h2>Table Projection</h2>
+<table>
+    <tr>
+        @foreach (var name in ViewBag.ColumnsNames)
+        {
+            <td>@name</td>
+        }
+    </tr>
+    @foreach (var row in Model)
+    {
+        <tr>
+            @foreach (var cell in row)
+            {
+                <td>@cell</td>
+            }
+        </tr>
+    }
+</table>
+
