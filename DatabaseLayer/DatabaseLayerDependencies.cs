@@ -25,6 +25,7 @@ namespace DatabaseLayer
             services.AddScoped<IDatabaseRepository, DatabaseRepository>();
             services.AddScoped<ITableRepository, TableRepository>();
             services.AddScoped<IColumnRepository, ColumnRepository>();
+            services.AddScoped<ITableProjectionRepository,TableProjectionRepository>();
         }
     }
 }
