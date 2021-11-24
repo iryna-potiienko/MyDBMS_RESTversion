@@ -1,23 +1,48 @@
 ﻿@model TableProjectionViewModel
 <div>
-    <h3>Форма оформления покупки</h3>
-    <p>Для оформления покупки заполните следующие поля:</p>
-    <form method="post">
-        <table>
-            <tr>
-                <td>DatabaseName:</td>
-                <td><input type="text" name="DatabaseName" /> </td>
-            </tr>
-            <tr>
-                <td>TableName:</td>
-                <td><input type="text" name="TableName" /></td>
-            </tr>
-            <tr>
-                <td>ColumnsNames:</td>
-                <td><input type="text" name="ColumnsNames" /></td>
-            </tr>
-            
-            <tr><td><input type="submit" value="Отправить" asp-action="Index"/> </td><td></td></tr>
-        </table>
-    </form>
+    <h3>Table Projection Form</h3>
+    <p>Insert data about table</p>
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div class="form-group">
+                    <label class="control-label">DatabaseName</label>
+                    <input name="DatabaseName" class="form-control" />
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label">TableName</label>
+                    <input name="TableName" class="form-control" />
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label">ColumnsNames</label>
+                    <input name="ColumnsNames" class="form-control" />
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="Find Projection" class="btn btn-primary" asp-action="ShowTableProjection"/>
+                </div>
+                
+                
+                
+                <!--<table>
+                    <tr>
+                        <td>DatabaseName:</td>
+                        <td><input type="text" name="DatabaseName"/> </td>
+                    </tr>
+                    <tr>
+                        <td>TableName:</td>
+                        <td><input type="text" name="TableName"/></td>
+                    </tr>
+                    <tr>
+                        <td>ColumnsNames:</td>
+                        <td><input type="text" name="ColumnsNames"/></td>
+                    </tr>
+
+                    <tr><td><input type="submit" value="Submit" asp-action="ShowTableProjection"/> </td><td></td></tr>
+                </table>-->
+            </form>
+        </div>
+    </div>
 </div>

@@ -17,49 +17,49 @@ namespace MVCWebApp.Controllers
             _tableProjectionRepository = tableProjectionRepository;
         }
 
-        // GET
-        // public IActionResult Index()
-        // {
-        //     if (!_tableRepository.TableExistsInDatabase(databaseName, tableName))
-        //         return NotFound();
-        //
-        //     var table = _tableRepository.FindTableByName(databaseName, tableName);
-        //     //return _tablesDifferenceRepository.FindTablesDifference(table1, table2);
-        //     var projection =  _tableProjectionRepository.FindTableProjection(table, columnsNames);
-        //     return PartialView(projection);
-        // }
-        
         [HttpGet]
         public IActionResult InsertValuesForTableProjection()
         {
-            //if (id == null) return RedirectToAction("Index");
-            //ViewBag.PhoneId = id;
             return View();
         }
         
         [HttpPost]
         public IActionResult InsertValuesForTableProjection(TableProjectionViewModel viewModel)
         {
-            //if (id == null) return RedirectToAction("Index");
-            //ViewBag.PhoneId = id;
-            return RedirectToAction(nameof(Index), viewModel);
+            //if (id == null) return RedirectToAction("ShowTableProjection");
+            ViewBag.TableName = viewModel.TableName;
+            if (!_tableRepository.TableExistsInDatabase(viewModel.DatabaseName, viewModel.TableName))
+                return RedirectToAction(nameof(TableNotExist), viewModel);
+            return RedirectToAction(nameof(ShowTableProjection), viewModel);
         }
 
         [HttpPost]
-        public ViewResult Index(TableProjectionViewModel viewModel)
+        public IActionResult ShowTableProjection(TableProjectionViewModel viewModel)
             //(string databaseName, string tableName, List<string> columnsNames)
         {
-            //if (!_tableRepository.TableExistsInDatabase(databaseName, tableName))
-            //return NotFound();
-
             var databaseName = viewModel.DatabaseName;
             var tableName = viewModel.TableName;
-            var columnsNames = viewModel.ColumnsNames.Split(";").ToList();
+            var columnsNames = viewModel.ColumnsNames.Split(", ").ToList();
+            
+            ViewBag.DatabaseName = viewModel.DatabaseName;
+            ViewBag.TableName = viewModel.TableName;
+            if (!_tableRepository.TableExistsInDatabase(databaseName, tableName))
+                return RedirectToAction(nameof(TableNotExist), viewModel);
+            
             ViewBag.ColumnsNames = columnsNames;
 
             var table = _tableRepository.FindTableByName(databaseName, tableName);
             var projection = _tableProjectionRepository.FindTableProjection(table, columnsNames);
             return View(projection);
+        }
+
+        [HttpGet]
+        public ViewResult TableNotExist(TableProjectionViewModel viewModel)
+            //(string databaseName, string tableName, List<string> columnsNames)
+        {
+            ViewBag.DatabaseName = viewModel.DatabaseName;
+            ViewBag.TableName = viewModel.TableName;
+            return View();
         }
     }
 }
