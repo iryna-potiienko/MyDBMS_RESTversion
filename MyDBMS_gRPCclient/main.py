@@ -10,7 +10,8 @@ channel = grpc.insecure_channel('localhost:5000')
 # create a stub (client)
 stub = tableProjection_pb2_grpc.TableProjectionStub(channel)
 
-# create a valid request message
+# create a valid request message 1
+
 databaseName = input("Input database name: ")
 tableName = input("Input table name: ")
 columns = input("Input columns names: ")
