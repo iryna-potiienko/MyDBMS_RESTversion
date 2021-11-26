@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+package greet;
+
+// The greeting service definition.
+service TableProjection {
+  rpc FindTableProjection (TableProjectionRequest) returns (TableProjectionReply);
+}
+
+// The request message
+message TableProjectionRequest {
+  string databaseName = 1;
+  string tableName = 2;
+  repeated string columnsNames = 3;
+}
+
+// The response message
+message TableProjectionReply {
+  repeated Row projectionRows = 1;
+  string ErrorMessage = 2;
+
+  message Row {
+    repeated string row = 1;
+  }
+}
