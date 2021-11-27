@@ -12,4 +12,8 @@
       <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="executable" />
+    </ItemGroup>
+
 </Project>
