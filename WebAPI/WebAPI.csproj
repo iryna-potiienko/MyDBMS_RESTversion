@@ -13,10 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="executable" />
-    </ItemGroup>
-
-    <ItemGroup>
       <_ContentIncludedByDefault Remove="executable\linux-x64\appsettings.Development.json" />
       <_ContentIncludedByDefault Remove="executable\linux-x64\appsettings.json" />
       <_ContentIncludedByDefault Remove="executable\linux-x64\DatabaseGot.json" />
