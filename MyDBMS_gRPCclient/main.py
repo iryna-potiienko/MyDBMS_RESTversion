@@ -10,7 +10,7 @@ channel = grpc.insecure_channel('localhost:5000')
 # create a stub (client)
 stub = tableProjection_pb2_grpc.TableProjectionStub(channel)
 
-# create a valid request message 1
+# create a valid request message
 
 databaseName = input("Input database name: ")
 tableName = input("Input table name: ")
@@ -28,6 +28,7 @@ print("\n-----Table Projection----",
 
 # make the call
 response = stub.FindTableProjection(request)
+print("\nWaiting for server response...")
 
 print("\n\nServerResponse:")
 if response.ErrorMessage != "":
