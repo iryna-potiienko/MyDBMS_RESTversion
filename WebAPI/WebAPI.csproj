@@ -12,4 +12,13 @@
       <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="executable\linux-x64\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="executable\linux-x64\appsettings.json" />
+      <_ContentIncludedByDefault Remove="executable\linux-x64\DatabaseGot.json" />
+      <_ContentIncludedByDefault Remove="executable\linux-x64\WebAPI.deps.json" />
+      <_ContentIncludedByDefault Remove="executable\linux-x64\WebAPI.runtimeconfig.dev.json" />
+      <_ContentIncludedByDefault Remove="executable\linux-x64\WebAPI.runtimeconfig.json" />
+    </ItemGroup>
+
 </Project>

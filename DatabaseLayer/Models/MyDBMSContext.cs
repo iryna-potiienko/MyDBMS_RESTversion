@@ -22,7 +22,7 @@ namespace DatabaseLayer.Models
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1440;Database=MyDBMSDatabase;User=SA;Password=myStrong_password(!);");
+            optionsBuilder.UseSqlServer("Server=10.32.224.3,1433;Database=MyDBMSDatabase;User=sqlserver;Password=myStrong_password(!);");
             // Data Source=localhost,1440;Initial Catalog=MovieDB;Persist Security Info=True;User ID=SA;Password=vV5r9tn0M4@
             //optionsBuilder.UseSqlServer("Server=IPOTIIENKONB\\SQLEXPRESS;Database=MyDBMSDatabase;Trusted_Connection=True;");
         }
